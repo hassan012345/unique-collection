@@ -3,8 +3,6 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --hero-bg-start: #111827; /* gray-900 */
-  --hero-bg-end: #374151; /* gray-700 */
   --hero-text: #ffffff;
   --hero-accent: #fbbf24; /* yellow-400 */
   --hero-accent-hover: #f59e0b; /* yellow-500 */

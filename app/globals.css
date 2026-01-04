@@ -7,6 +7,10 @@
   --hero-accent: #fbbf24; /* yellow-400 */
   --hero-accent-hover: #f59e0b; /* yellow-500 */
   --button-green: #245749;
+  --primary-green: #1B4B3A;
+  --discount-red: #EF4444;
+  --star-yellow: #FBBF24;
+  --new-arrival-yellow: #FFF085;
 }
 
 @theme inline {
@@ -34,4 +38,11 @@ body {
   .hero-section {
     background-attachment: scroll !important;
   }
+}
+
+
+.swiper-button-disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  pointer-events: none;
 }

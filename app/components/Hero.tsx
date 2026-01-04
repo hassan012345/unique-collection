@@ -5,11 +5,9 @@ import { FaChevronDown } from "react-icons/fa";
 
 const HeroSection = () => {
   return (
-    <header className="relative">
-
-      {/* Hero Container */}
+    <header className="relative w-full h-screen">
       <div
-        className="relative h-[600px] md:h-vh-100px bg-cover bg-center bg-no-repeat overflow-hidden"
+        className="w-full h-full bg-cover bg-center"
         style={{
           backgroundImage: "url('/hero-background.png')",
         }}

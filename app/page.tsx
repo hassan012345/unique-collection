@@ -7,6 +7,10 @@ import BestSelling from "./components/BestSelling";
 import "./globals.css";
 import MenCollection from "./components/MenCollection";
 import UniqueMenCollection from "./components/UniqueMenCollection";
+import HowItWorks from "./components/HowItWorks";
+import VisualizeAi from "./components/VisualizeAi";
+import LovedByWomen from "./components/LovedByWomen";
+import UniqueWomenCollection from "./components/UniqueWomenCollection";
 
 export default function Home() {
   return (
@@ -17,6 +21,10 @@ export default function Home() {
       <BestSelling/>
       <MenCollection/>
       <UniqueMenCollection/>
+      <HowItWorks/>
+      <VisualizeAi/>
+      <LovedByWomen/>
+      <UniqueWomenCollection/>
       <Footer/>
     </div>
   );

@@ -32,7 +32,7 @@ const BestSelling = () => {
           <SwiperSlide>
             <div className="relative h-[500px] md:h-[600px] bg-gray-100 rounded-lg overflow-hidden shadow-md">
               <img
-                src="https://placehold.co/400x600?text=Occasion+Wear"
+                src="/ManEmbroidedKurta.png"
                 alt="Occasion Wear"
                 className="w-full h-full object-cover"
               />
@@ -50,7 +50,7 @@ const BestSelling = () => {
               <div className="absolute top-2 left-2 bg-[var(--new-arrival-yellow)] text-white text-xs px-2 py-1 rounded">New Arrival</div>
               <div className="absolute top-2 right-2 bg-red-500 text-white text-xs px-2 py-1 rounded-full">-50%</div>
               <img
-                src="/product1.png"
+                src="/ClassicWhite.png"
                 alt="Classic White Shalwar Kameez"
                 className="w-full h-3/4 object-cover"
               />
@@ -74,7 +74,7 @@ const BestSelling = () => {
               <div className="absolute top-2 left-2 bg-[var(--new-arrival-yellow)] text-white text-xs px-2 py-1 rounded">New Arrival</div>
               <div className="absolute top-2 right-2 bg-red-500 text-white text-xs px-2 py-1 rounded-full">-50%</div>
               <img
-                src="/product1.png"
+                src="/ClassicWhite.png"
                 alt="Classic White Shalwar Kameez"
                 className="w-full h-3/4 object-cover"
               />
@@ -97,7 +97,7 @@ const BestSelling = () => {
               <div className="absolute top-2 left-2 bg-[var(--new-arrival-yellow)] text-white text-xs px-2 py-1 rounded">New Arrival</div>
               <div className="absolute top-2 right-2 bg-red-500 text-white text-xs px-2 py-1 rounded-full">-50%</div>
               <img
-                src="https://placehold.co/300x400?text=Classic+White"
+                src="/ClassicWhite.png"
                 alt="Classic White Shalwar Kameez"
                 className="w-full h-3/4 object-cover"
               />

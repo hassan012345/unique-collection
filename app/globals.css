@@ -1,12 +1,14 @@
 @import "tailwindcss";
 
 :root {
+  --banner-bg: #245749;
+  --bg-new-arrival: #FFD6A8;
+  --header-bg:#184335;
   --background: #ffffff;
   --foreground: #171717;
   --hero-text: #ffffff;
-  --hero-accent: #fbbf24; /* yellow-400 */
-  --hero-accent-hover: #f59e0b; /* yellow-500 */
-  --button-green: #245749;
+  --hero-accent: #fbbf24;
+  --hero-accent-hover: #f59e0b;
   --primary-green: #1B4B3A;
   --discount-red: #EF4444;
   --star-yellow: #FBBF24;
@@ -14,8 +16,9 @@
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-banner: var(--banner-bg);
+  --color-header: var(--header-bg);
+  --color-new: var(--bg-new-arrival);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -41,8 +44,13 @@ body {
 }
 
 
-.swiper-button-disabled {
+/* .swiper-button-disabled {
   opacity: 0.35;
   cursor: not-allowed;
   pointer-events: none;
+} */
+
+.swiper-button-prev:after,
+.swiper-button-next:after {
+  display: none !important;
 }

@@ -1,135 +1,145 @@
+"use client";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
+import { FaChevronRight } from "react-icons/fa6";
 import Image from "next/image";
 
-const UniqueMenCollection = () => {
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/navigation";
+import { FaChevronLeft } from "react-icons/fa6";
+
+export default function SwiperCmp() {
   const products = [
     {
-      image: "/women.png", // Replace with actual image path
-      discount: "-50%",
-      newArrival: true,
-      name: "Shalwar Kameez",
-      description: "Classic style, modern fit.",
-      rating: 4.9,
-      reviews: 156,
-      price: 4500,
-      oldPrice: 4600,
+      id: 1,
+      image: "/women.png",
+      badge: "New",
+      title: "Classic White Shalwar Kameez",
+      price: "PKR 4,500",
     },
     {
+      id: 2,
       image: "/women.png",
-      discount: "-50%",
-      newArrival: true,
-      name: "Shalwar Kameez",
-      description: "Classic style, modern fit.",
-      rating: 4.9,
-      reviews: 156,
-      price: 4500,
-      oldPrice: 4600,
+      badge: "New Arrival",
+      title: "Red Shalwar kameez suite",
+      price: "PKR 3,500",
     },
     {
+      id: 3,
       image: "/women.png",
-      discount: "-50%",
-      newArrival: true,
-      name: "Shalwar Kameez",
-      description: "Classic style, modern fit.",
-      rating: 4.9,
-      reviews: 156,
-      price: 4500,
-      oldPrice: 4600,
+      badge: "Sale",
+      title: "Blue Banarsi Kameez",
+      price: "PKR 2,500",
     },
     {
+      id: 4,
       image: "/women.png",
-      discount: "-50%",
-      newArrival: true,
-      name: "Shalwar Kameez",
-      description: "Classic style, modern fit.",
-      rating: 4.9,
-      reviews: 156,
-      price: 4500,
-      oldPrice: 4600,
+      badge: "Sale",
+      title: "Classic White Shalwar Kameez",
+      price: "PKR 10,500",
+    },
+    {
+      id: 5,
+      image: "/women.png",
+      badge: null,
+      title: "Classic White Shalwar Kameez",
+      price: "PKR 10,500",
     },
   ];
 
   return (
-    <section className="py-12 px-4 md:px-8 bg-white">
-      <div className="max-w-7xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-serif text-center mb-6">
-          Unique Women Collection
-        </h2>
-        <nav className="flex flex-wrap justify-center space-x-4 md:space-x-6 text-gray-600 text-sm md:text-base mb-8">
-          <a href="#" className="hover:text-[#1B4B3A]">
-            Unstitched Suits
-          </a>
-          <a href="#" className="hover:text-[#1B4B3A]">
+    <section className="py-8 px-4 md:px-8 bg-white max-w-7xl mx-auto">
+      <h2 className="text-3xl font-bold mb-6 text-center md:text-left">
+        Unique Women&apos;s Collection
+      </h2>
+
+      {/* Category Tabs */}
+      <div className="flex items-center justify-between mb-6 overflow-x-auto pb-3 scrollbar-hide">
+        <div className="flex gap-3 whitespace-nowrap">
+          <button className="bg-green-800 text-white px-6 py-2 rounded-full text-sm font-medium">
             New Arrival
-          </a>
-          <a href="#" className="hover:text-[#1B4B3A]">
-            Ready Made Suits
-          </a>
-          <a href="#" className="hover:text-[#1B4B3A]">
-            3 Piece Suits
-          </a>
-          <a href="#" className="hover:text-[#1B4B3A]">
-            Kurti Collection
-          </a>
-          <a href="#" className="hover:text-[#1B4B3A]">
-            Formal Wear
-          </a>
-        </nav>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-          {products.map((product, index) => (
-            <div
-              key={index}
-              className="relative bg-white rounded-lg overflow-hidden shadow-md flex flex-col"
-            >
-              {/* Image Container with Aspect Ratio */}
-              <div className="relative aspect-[3/4] w-full overflow-hidden">
-                {/* Discount Tag */}
-                <div className="absolute top-2 right-2 z-10 bg-red-500 text-white text-[10px] font-bold px-2 py-1 rounded-full">
-                  {product.discount}
-                </div>
-
-                {/* New Arrival Tag - Now anchored correctly */}
-                {product.newArrival && (
-                  <div className="absolute bottom-3 left-3 z-10 bg-[#FBBF24] text-white text-[10px] px-2 py-1 rounded font-semibold uppercase tracking-wider">
-                    New Arrival
-                  </div>
-                )}
-
-                <Image
-                  src={product.image}
-                  alt={product.name}
-                  fill // Use fill with parent relative + aspect ratio
-                  className="object-cover transition-transform duration-500 hover:scale-105"
-                />
-              </div>
-              <div className="p-4">
-                <h3 className="text-base font-medium">{product.name}</h3>
-                <p className="text-sm text-gray-600">{product.description}</p>
-                <div className="flex items-center mt-1">
-                  <span className="text-yellow-400 text-sm">★★★★★</span>
-                  <span className="text-xs text-gray-500 ml-1">
-                    ({product.rating} {product.reviews})
-                  </span>
-                </div>
-                <div className="flex items-center mt-2">
-                  <span className="text-[#1B4B3A] font-bold">
-                    PKR {product.price.toLocaleString()}
-                  </span>
-                  <span className="text-gray-500 line-through ml-2">
-                    PKR {product.oldPrice.toLocaleString()}
-                  </span>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-        <div className="flex justify-center mt-8">
-          <button className="bg-[#1B4B3A] text-white px-6 py-3 rounded-full font-medium text-base hover:bg-[#163a2d] transition">
-            View All
           </button>
+          <button className="hover:bg-gray-100 px-6 py-2 rounded-full text-sm font-medium text-gray-700 border border-gray-300">
+            Sale
+          </button>
+          <button className="hover:bg-gray-100 px-6 py-2 rounded-full text-sm font-medium text-gray-700 border border-gray-300">
+            Unstitched
+          </button>
+          <button className="hover:bg-gray-100 px-6 py-2 rounded-full text-sm font-medium text-gray-700 border border-gray-300">
+            Shalwar Kameez
+          </button>
+          <button className="hover:bg-gray-100 px-6 py-2 rounded-full text-sm font-medium text-gray-700 border border-gray-300">
+            Kurtas
+          </button>
+          
         </div>
+        <button className="hidden md:block bg-white border border-gray-300 hover:bg-gray-100 px-6 py-2 rounded-full text-sm font-medium whitespace-nowrap">
+          View All
+        </button>
+      </div>
+
+      {/* Swiper with EXACT arrow buttons from your image */}
+      <div className="relative">
+        <Swiper
+          modules={[Navigation]}
+          navigation={{
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+          }}
+          spaceBetween={20}
+          slidesPerView={1.2}
+          breakpoints={{
+            640: { slidesPerView: 2.2 },
+            768: { slidesPerView: 3 },
+            1024: { slidesPerView: 4.2 },
+          }}
+          className="product-swiper"
+        >
+          {products.map((product) => (
+            <SwiperSlide key={product.id}>
+              <div className="group relative bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all">
+                <div className="relative h-[380px] md:h-[420px] w-full">
+                  <Image
+                    src={product.image}
+                    alt={product.title}
+                    fill
+                    className="object-cover"
+                  />
+                  {product.badge === "Sale" && (
+                    <div className="absolute top-4 right-4 bg-white text-black text-xs font-bold px-5 py-1 rounded-full shadow-md">
+                      Sale
+                    </div>
+                  )}
+                  {product.badge === "New" && (
+                    <div className="absolute bottom-4 left-4 bg-new text-black text-xs font-bold px-4 py-1 rounded shadow-md">
+                      New Arrival
+                    </div>
+                  )}
+                </div>
+                <div className="p-4">
+                  <p className="text-sm text-gray-900 line-clamp-2 font-medium">
+                    {product.title}
+                  </p>
+                  <p className="text-lg font-semibold text-[#184335] mt-1">
+                    {product.price}
+                  </p>
+                </div>
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+
+        {/* EXACT ARROW BUTTONS - Matching your screenshot 100% */}
+        <button className="swiper-button-prev absolute -left-5 md:-left-6 top-1/2 -translate-y-1/2 z-10 bg-white w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center hover:shadow-xl hover:scale-110 transition-all">
+          <FaChevronLeft color="black" />
+        </button>
+
+        <button className="swiper-button-next absolute -right-5 md:-right-6 top-1/2 -translate-y-1/2 z-10 bg-white w-12 h-12 rounded-full shadow-lg border border-gray-200 flex items-center justify-center hover:shadow-xl hover:scale-110 transition-all">
+          <FaChevronRight color="black" />
+        </button>
       </div>
     </section>
   );
-};
-
-export default UniqueMenCollection;
+}

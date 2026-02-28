@@ -2,11 +2,13 @@
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
-import { FaChevronRight, FaChevronLeft } from "react-icons/fa6";
+import { FaChevronRight } from "react-icons/fa6";
 import Image from "next/image";
 
+// Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
+import { FaChevronLeft } from "react-icons/fa6";
 
 export default function SwiperCmp() {
   const products = [
@@ -30,7 +32,6 @@ export default function SwiperCmp() {
       badge: "Sale",
       title: "Blue Banarsi Kameez",
       price: "PKR 2,500",
-      oldPrice: "PKR 4,000", // add old price for sale items
     },
     {
       id: 4,
@@ -38,7 +39,6 @@ export default function SwiperCmp() {
       badge: "Sale",
       title: "Classic White Shalwar Kameez",
       price: "PKR 10,500",
-      oldPrice: "PKR 12,000",
     },
     {
       id: 5,
@@ -85,7 +85,7 @@ export default function SwiperCmp() {
         </button>
       </div>
 
-      {/* Swiper */}
+      {/* Swiper with EXACT arrow buttons from your image */}
       <div className="relative">
         <Swiper
           modules={[Navigation]}
@@ -128,34 +128,23 @@ export default function SwiperCmp() {
                   <p className="text-sm text-gray-900 line-clamp-2 font-medium">
                     {product.title}
                   </p>
-                  <div className="flex items-center gap-2 mt-1">
-                    <p className="text-lg font-semibold text-[#184335]">
-                      {product.price}
-                    </p>
-                    {product.oldPrice && (
-                      <p className="text-sm text-gray-500 line-through">
-                        {product.oldPrice}
-                      </p>
-                    )}
-                  </div>
+                  <p className="text-lg font-semibold text-[#184335] mt-1">
+                    {product.price}
+                  </p>
                 </div>
               </div>
             </SwiperSlide>
           ))}
         </Swiper>
 
-        {/* Tiny Arrow Buttons */}
-<button className="swiper-button-prev absolute -left-2 md:-left-3 top-1/2 -translate-y-1/2 z-10 
-  bg-white w-6 h-6 rounded-full border border-gray-200 flex items-center justify-center 
-  hover:shadow-md transition-all">
-  <FaChevronLeft size={10} color="black" />
-</button>
+        {/* EXACT ARROW BUTTONS - Matching your screenshot 100% */}
+        <button className="swiper-button-prev absolute -left-5 md:-left-6 top-1/2 -translate-y-1/2 z-10 bg-white w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center hover:shadow-xl hover:scale-110 transition-all">
+          <FaChevronLeft color="black" />
+        </button>
 
-<button className="swiper-button-next absolute -right-2 md:-right-3 top-1/2 -translate-y-1/2 z-10 
-  bg-white w-6 h-6 rounded-full border border-gray-200 flex items-center justify-center 
-  hover:shadow-md transition-all">
-  <FaChevronRight size={10} color="black" />
-</button>
+        <button className="swiper-button-next absolute -right-5 md:-right-6 top-1/2 -translate-y-1/2 z-10 bg-white w-12 h-12 rounded-full shadow-lg border border-gray-200 flex items-center justify-center hover:shadow-xl hover:scale-110 transition-all">
+          <FaChevronRight color="black" />
+        </button>
       </div>
     </section>
   );

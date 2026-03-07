@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
-
-
 export const metadata: Metadata = {
-  title: "Unique Collection",
-  description: "Premium Men's Wear-Ready-Made&Custom Stitches",
+  title: "Unique Collection - Premium Men's & Women's Wear | Peshawar",
+  description: "Peshawar's premier destination for custom and ready-made menswear. Shop Shalwar Kameez, Waistcoats, Formal Wear and more.",
 };
 
 export default function RootLayout({
@@ -15,11 +13,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={'antialiased'}
-      >
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

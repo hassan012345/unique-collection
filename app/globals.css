@@ -1,56 +1,85 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import Neue Montreal from Google Fonts fallback (Outfit is close match) */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+
+/* 
+  Neue Montreal - use Outfit as web-safe alternative
+  Perfectly Nineties - use Playfair Display as editorial serif
+*/
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
 
 :root {
-  --banner-bg: #245749;
-  --bg-new-arrival: #FFD6A8;
-  --header-bg:#184335;
-  --background: #ffffff;
-  --foreground: #171717;
-  --hero-text: #ffffff;
-  --hero-accent: #fbbf24;
-  --hero-accent-hover: #f59e0b;
-  --primary-green: #1B4B3A;
-  --discount-red: #EF4444;
-  --star-yellow: #FBBF24;
-  --new-arrival-yellow: #FFF085;
+  --font-neue-montreal: 'Outfit', sans-serif;
+  --font-perfectly-nineties: 'Playfair Display', serif;
 }
 
-@theme inline {
-  --color-banner: var(--banner-bg);
-  --color-header: var(--header-bg);
-  --color-new: var(--bg-new-arrival);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
-/* @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-} */
-
+html,
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  max-width: 100vw;
+  overflow-x: hidden;
+  font-family: var(--font-neue-montreal);
 }
 
-/* Hero section mobile optimizations */
-@media (max-width: 768px) {
-  .hero-section {
-    background-attachment: scroll !important;
-  }
+/* Font family utility classes */
+.font-neue-montreal {
+  font-family: var(--font-neue-montreal);
 }
 
+.font-perfectly-nineties {
+  font-family: var(--font-perfectly-nineties);
+}
 
-/* .swiper-button-disabled {
-  opacity: 0.35;
-  cursor: not-allowed;
-  pointer-events: none;
-} */
+/* Scrollbar hide utility */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
 
-.swiper-button-prev:after,
-.swiper-button-next:after {
-  display: none !important;
+/* Custom line-clamp */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Product card hover */
+.product-card-img {
+  transition: transform 0.4s ease;
+}
+.product-card:hover .product-card-img {
+  transform: scale(1.04);
+}
+
+/* Pill filter button */
+.pill-active {
+  background-color: #E8ECEB;
+  border: 1px solid #184335;
+  color: #184335;
+}
+.pill-inactive {
+  border: 1px solid #E5E5E5;
+  color: #737373;
+}
+.pill-inactive:hover {
+  border-color: #184335;
+  color: #184335;
+  background-color: #f5f8f7;
 }

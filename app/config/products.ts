@@ -30,6 +30,7 @@ export interface Product {
   price:          string;
   originalPrice?: string;
   badge?:         "Sale";
+  inStock:       boolean;
   tag?:           "New Arrival";
   image:          string;
   href:           string;
@@ -64,6 +65,7 @@ export const MEN_PRODUCTS: Product[] = [
     originalPrice: "PKR 6,000",
     badge:         "Sale",
     tag:           "New Arrival",
+    inStock:       true,
     image:         "/men1.png",
     href:          "/men/classic-white-shalwar-kameez",
   },
@@ -72,7 +74,8 @@ export const MEN_PRODUCTS: Product[] = [
     name:  "Red Shalwaar Kameez Suite",
     price: "PKR 3,500",
     tag:   "New Arrival",
-    image: "/men1.png",
+    inStock:       true,
+    image: "/men2.png",
     href:  "/men/red-shalwaar-kameez",
   },
   {
@@ -81,14 +84,16 @@ export const MEN_PRODUCTS: Product[] = [
     price:         "PKR 2,500",
     originalPrice: "PKR 4,500",
     badge:         "Sale",
-    image:         "/men1.png",
+    inStock:       true,
+    image:         "/men3.png",
     href:          "/men/blue-banarsi-kameez",
   },
   {
     id:    4,
     name:  "Classic White Shalwar Kameez",
     price: "PKR 10,500",
-    image: "/men1.png",
+    inStock:       true,
+    image: "/men4.png",
     href:  "/men/classic-white-shalwar-kameez-2",
   },
   {
@@ -96,6 +101,7 @@ export const MEN_PRODUCTS: Product[] = [
     name:  "Beige Linen Kurta",
     price: "PKR 5,200",
     tag:   "New Arrival",
+    inStock:       true,
     image: "/men1.png",
     href:  "/men/beige-linen-kurta",
   },
@@ -110,6 +116,7 @@ export const WOMEN_PRODUCTS: Product[] = [
     originalPrice: "PKR 6,000",
     badge:         "Sale",
     tag:           "New Arrival",
+    inStock:       true,
     image:         "/men1.png",
     href:          "/women/classic-white-shalwar-kameez",
   },
@@ -118,6 +125,7 @@ export const WOMEN_PRODUCTS: Product[] = [
     name:  "Red Shalwaar Kameez Suite",
     price: "PKR 3,500",
     tag:   "New Arrival",
+    inStock:       true,
     image: "/men1.png",
     href:  "/women/red-shalwaar-kameez",
   },
@@ -127,6 +135,7 @@ export const WOMEN_PRODUCTS: Product[] = [
     price:         "PKR 2,500",
     originalPrice: "PKR 4,500",
     badge:         "Sale",
+    inStock:       true,
     image:         "/men1.png",
     href:          "/women/blue-banarsi-kameez",
   },
@@ -134,6 +143,7 @@ export const WOMEN_PRODUCTS: Product[] = [
     id:    4,
     name:  "Classic White Shalwar Kameez",
     price: "PKR 10,500",
+    inStock:       true,
     image: "/men1.png",
     href:  "/women/classic-white-shalwar-kameez-2",
   },
@@ -142,6 +152,7 @@ export const WOMEN_PRODUCTS: Product[] = [
     name:  "Floral Printed Lawn Suit",
     price: "PKR 6,800",
     tag:   "New Arrival",
+    inStock:       true,
     image: "/men1.png",
     href:  "/women/floral-printed-lawn-suit",
   },

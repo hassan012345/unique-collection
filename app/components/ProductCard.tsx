@@ -1,14 +1,15 @@
+import Link from "next/link";
 import type { Product } from "@/config/products";
 
 function ProductCard({ product }: { product: Product }) {
   return (
-    <div className="product-card">
+    <Link href={product.href} className="product-card block group">
       {/* Image container */}
-      <div className="relative h-[235px] md:h-[350px] lg:h-[397px] rounded-lg overflow-hidden bg-[#F5F5F5]">
+      <div className="relative h-[235px] md:h-[350px] lg:h-[397px] rounded-lg overflow-hidden bg-[#F5F5F5] group-hover:shadow-lg transition-shadow duration-300">
         <img
           src={product.image}
           alt={product.name}
-          className="product-card-img w-full h-full object-cover"
+          className="product-card-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
         />
         {product.badge && (
           <div className="absolute top-3 right-3">
@@ -35,6 +36,8 @@ function ProductCard({ product }: { product: Product }) {
       leading-[150%] 
       font-normal 
       line-clamp-2
+      group-hover:text-[#184335]
+      transition-colors
     "
           style={{ fontFamily: "var(--font-neue-montreal)" }}
         >
@@ -70,7 +73,7 @@ function ProductCard({ product }: { product: Product }) {
           )}
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
 

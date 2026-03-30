@@ -36,7 +36,9 @@ function FilterIcon() {
     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden>
       <path
         d="M3 5h14M6 10h8M9 15h2"
-        stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
       />
     </svg>
   );
@@ -45,35 +47,42 @@ function FilterIcon() {
 function CloseSmIcon() {
   return (
     <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden>
-      <path d="M1 1l8 8M9 1L1 9" stroke="currentColor"
-        strokeWidth="1.4" strokeLinecap="round" />
+      <path
+        d="M1 1l8 8M9 1L1 9"
+        stroke="currentColor"
+        strokeWidth="1.4"
+        strokeLinecap="round"
+      />
     </svg>
   );
 }
 
 // ── Props ──────────────────────────────────────────────────────────
 interface Props {
-  title:          string;
-  description?:   string;
-  breadcrumbs?:   BreadcrumbItem[];
-  products:       Product[];
-  filterOptions:  FilterOption[];          // category options from config
-  pills?:         { label: string; value: string }[];
+  title: string;
+  description?: string;
+  breadcrumbs?: BreadcrumbItem[];
+  products: Product[];
+  filterOptions: FilterOption[]; // category options from config
+  pills?: { label: string; value: string }[];
 }
 
 const PAGE_SIZE = 12;
 
 export default function ProductListingPage({
-  title, description, breadcrumbs,
-  products, filterOptions, pills = [],
+  title,
+  description,
+  breadcrumbs,
+  products,
+  filterOptions,
+  pills = [],
 }: Props) {
-
   // ── State ──────────────────────────────────────────────────────
-  const [selected,       setSelected]       = useState<string[]>([]);
-  const [sort,           setSort]           = useState<SortValue>("featured");
-  const [activePill,     setActivePill]     = useState(0);
-  const [page,           setPage]           = useState(1);
-  const [filterOpen,     setFilterOpen]     = useState(false);
+  const [selected, setSelected] = useState<string[]>([]);
+  const [sort, setSort] = useState<SortValue>("featured");
+  const [activePill, setActivePill] = useState(0);
+  const [page, setPage] = useState(1);
+  const [filterOpen, setFilterOpen] = useState(false);
 
   // ── Filter + sort ──────────────────────────────────────────────
   const filtered = useMemo(() => {
@@ -81,17 +90,21 @@ export default function ProductListingPage({
 
     if (selected.length > 0) {
       list = list.filter((p) =>
-        selected.some((v) => p.href.split("/").pop()?.includes(v))
+        selected.some((v) => p.href.split("/").pop()?.includes(v)),
       );
     }
 
     if (sort === "price-asc")
-      list.sort((a, b) =>
-        parseInt(a.price.replace(/\D/g, "")) - parseInt(b.price.replace(/\D/g, ""))
+      list.sort(
+        (a, b) =>
+          parseInt(a.price.replace(/\D/g, "")) -
+          parseInt(b.price.replace(/\D/g, "")),
       );
     if (sort === "price-desc")
-      list.sort((a, b) =>
-        parseInt(b.price.replace(/\D/g, "")) - parseInt(a.price.replace(/\D/g, ""))
+      list.sort(
+        (a, b) =>
+          parseInt(b.price.replace(/\D/g, "")) -
+          parseInt(a.price.replace(/\D/g, "")),
       );
 
     return list;
@@ -99,12 +112,12 @@ export default function ProductListingPage({
 
   // ── Pagination ─────────────────────────────────────────────────
   const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
-  const paginated  = filtered.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
+  const paginated = filtered.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
 
   // ── Active chips ───────────────────────────────────────────────
   const activeChips = useMemo(
     () => filterOptions.filter((o) => selected.includes(o.value)),
-    [filterOptions, selected]
+    [filterOptions, selected],
   );
 
   function dismissChip(value: string) {
@@ -155,14 +168,15 @@ export default function ProductListingPage({
               {title}
             </h1>
             {/* Mobile filter button — shows only when there are NO pills */}
-            {pills.length === 0 && (
-              <div>{FilterButton}</div>
-            )}
+            {pills.length === 0 && <div>{FilterButton}</div>}
           </div>
           {description && (
             <p
               className="text-sm text-[#46695D] max-w-xl mt-1"
-              style={{ fontFamily: "var(--font-neue-montreal)", fontWeight: 400 }}
+              style={{
+                fontFamily: "var(--font-neue-montreal)",
+                fontWeight: 400,
+              }}
             >
               {description}
             </p>
@@ -180,14 +194,22 @@ export default function ProductListingPage({
                 <button
                   key={pill.value}
                   type="button"
-                  onClick={() => { setActivePill(i); setPage(1); }}
+                  onClick={() => {
+                    setActivePill(i);
+                    setPage(1);
+                  }}
                   className={`
                     flex-none px-4 py-1.5 rounded-full text-sm border transition-colors whitespace-nowrap
-                    ${i === activePill
-                      ? "bg-[#E8ECEB] text-[#184335] border-[#184335]"
-                      : "bg-white text-[#525252] border-[#E5E5E5] hover:border-[#184335] hover:text-[#184335]"}
+                    ${
+                      i === activePill
+                        ? "bg-[#E8ECEB] text-[#184335] border-[#184335]"
+                        : "bg-white text-[#525252] border-[#E5E5E5] hover:border-[#184335] hover:text-[#184335]"
+                    }
                   `}
-                  style={{ fontFamily: "var(--font-neue-montreal)", fontWeight: 500 }}
+                  style={{
+                    fontFamily: "var(--font-neue-montreal)",
+                    fontWeight: 500,
+                  }}
                 >
                   {pill.label}
                 </button>
@@ -202,7 +224,6 @@ export default function ProductListingPage({
 
       {/* ── Body ──────────────────────────────────────────────── */}
       <div className="max-w-[1440px] mx-auto px-5 lg:px-20 py-6 lg:py-8">
-
         {/* Sort + result count */}
         <div className="flex items-center justify-between mb-4 gap-4">
           <p
@@ -215,18 +236,33 @@ export default function ProductListingPage({
           <div className="relative">
             <select
               value={sort}
-              onChange={(e) => { setSort(e.target.value as SortValue); setPage(1); }}
+              onChange={(e) => {
+                setSort(e.target.value as SortValue);
+                setPage(1);
+              }}
               className="appearance-none pl-3 pr-8 py-2 border border-[#E5E5E5] rounded-lg text-sm text-[#525252] bg-white hover:border-[#184335] focus:outline-none focus:border-[#184335] cursor-pointer"
               style={{ fontFamily: "var(--font-neue-montreal)" }}
             >
               {SORT_OPTIONS.map((o) => (
-                <option key={o.value} value={o.value}>{o.label}</option>
+                <option key={o.value} value={o.value}>
+                  {o.label}
+                </option>
               ))}
             </select>
-            <svg className="absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none"
-              width="12" height="12" viewBox="0 0 12 12" fill="none">
-              <path d="M3 4.5L6 7.5L9 4.5" stroke="#737373"
-                strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+            <svg
+              className="absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none"
+              width="12"
+              height="12"
+              viewBox="0 0 12 12"
+              fill="none"
+            >
+              <path
+                d="M3 4.5L6 7.5L9 4.5"
+                stroke="#737373"
+                strokeWidth="1.4"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
             </svg>
           </div>
         </div>
@@ -262,10 +298,7 @@ export default function ProductListingPage({
           </div>
         )}
 
-        {/* ── Full-width product grid ────────────────────────── */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-5 gap-y-8 lg:gap-x-6 lg:gap-y-10">
-          <ProductGrid products={paginated} onClear={clearAll} />
-        </div>
+        <ProductGrid products={paginated} onClear={clearAll} />
 
         {/* Pagination */}
         {totalPages > 1 && (
@@ -312,7 +345,10 @@ export default function ProductListingPage({
         <FilterSidebar
           options={filterOptions}
           selected={selected}
-          onChange={(vals) => { setSelected(vals); setPage(1); }}
+          onChange={(vals) => {
+            setSelected(vals);
+            setPage(1);
+          }}
           onClose={() => setFilterOpen(false)}
           productCount={filtered.length}
         />

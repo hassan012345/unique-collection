@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 
-const ctaBgUrl = "https://www.figma.com/api/mcp/asset/809487d4-71c4-4373-b684-a7b1f7b93d51";
+// local copy from public/ (downloaded from Figma)
+const ctaBgUrl = "/hero-background.png";
 
 export default function CTAMiddle() {
   return (

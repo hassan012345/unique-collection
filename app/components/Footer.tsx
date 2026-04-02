@@ -1,28 +1,18 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 
-const logoUrl = "https://www.figma.com/api/mcp/asset/a3c25e0e-b9b4-4fdf-a76b-edd12d4f42ed";
-const facebookIcon = "https://www.figma.com/api/mcp/asset/12693f50-d2fb-42fa-aba4-cb930f10e092";
-const twitterIcon = "https://www.figma.com/api/mcp/asset/c92825bc-b4a9-4bb1-915a-7e56702c8685";
+// local copies from public/ (downloaded from Figma)
+const logoUrl = "/Logo.png";
 
-// Payment card images from Figma
+// Payment card images (local placeholders)
 const paymentCards = [
-  "https://www.figma.com/api/mcp/asset/83af4236-d640-4b05-8309-73225211e517",
-  "https://www.figma.com/api/mcp/asset/0896b752-9f4c-49c1-a7ca-1a869c4c7f4d",
-  "https://www.figma.com/api/mcp/asset/3b1a8a61-9c4d-431e-9f07-f0d984b3c774",
-  "https://www.figma.com/api/mcp/asset/46b31901-16db-465f-9eb3-bdbdefce9119",
+  "/ApplePay.png",
+  "/GPay.png",
+  "/UnionPay.png",
+  "/VisaPay.png",
 ];
-
-function InstagramIcon() {
-  return (
-    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect x="2" y="2" width="20" height="20" rx="5" stroke="white" strokeWidth="2"/>
-      <circle cx="12" cy="12" r="4" stroke="white" strokeWidth="2"/>
-      <circle cx="17.5" cy="6.5" r="1" fill="white"/>
-    </svg>
-  );
-}
 
 const footerLinks = {
   Shop: [
@@ -58,12 +48,20 @@ export default function Footer() {
           {/* Brand column */}
           <div className="flex flex-col gap-5 max-w-[275px]">
             <div className="flex flex-col gap-5">
-              <img src={logoUrl} alt="Unique Collection" className="h-[41px] w-auto" />
+              <img
+                src={logoUrl}
+                alt="Unique Collection"
+                className="h-[41px] w-auto"
+              />
               <p
                 className="text-[#D4D4D4] text-sm leading-relaxed"
-                style={{ fontFamily: "var(--font-neue-montreal)", fontWeight: 400 }}
+                style={{
+                  fontFamily: "var(--font-neue-montreal)",
+                  fontWeight: 400,
+                }}
               >
-                Peshawar's premier destination for custom and ready-made menswear
+                Peshawar's premier destination for custom and ready-made
+                menswear
               </p>
             </div>
             {/* Social */}
@@ -75,14 +73,44 @@ export default function Footer() {
                 Follow Us
               </span>
               <div className="flex items-center gap-2">
-                <a href="#" className="bg-[#262626] w-[34px] h-[34px] rounded-full flex items-center justify-center hover:bg-[#333] transition-colors" aria-label="Facebook">
-                  <img src={facebookIcon} alt="Facebook" className="w-[13px] h-[13px] object-contain" />
+                <a
+                  href="#"
+                  className="bg-[#262626] w-[34px] h-[34px] rounded-full flex items-center justify-center hover:bg-[#333] transition-colors"
+                  aria-label="Facebook"
+                >
+                  <Image
+                    src={'/Facebook.png'}
+                    alt="Facebook"
+                    width={34}
+                    height={34}
+                    className="object-contain"
+                  />
                 </a>
-                <a href="#" className="bg-[#262626] w-[34px] h-[34px] rounded-full flex items-center justify-center hover:bg-[#333] transition-colors" aria-label="Instagram">
-                  <InstagramIcon />
+                <a
+                  href="#"
+                  className="bg-[#262626] w-[34px] h-[34px] rounded-full flex items-center justify-center hover:bg-[#333] transition-colors"
+                  aria-label="Instagram"
+                >
+                  <Image
+                    src={'/Instagram.png'}
+                    alt="Instagram"
+                    width={34}
+                    height={34}
+                    className="object-contain"
+                  />
                 </a>
-                <a href="#" className="bg-[#262626] w-[34px] h-[34px] rounded-full flex items-center justify-center hover:bg-[#333] transition-colors" aria-label="Twitter">
-                  <img src={twitterIcon} alt="Twitter" className="w-[13px] h-[13px] object-contain" />
+                <a
+                  href="#"
+                  className="bg-[#262626] w-[34px] h-[34px] rounded-full flex items-center justify-center hover:bg-[#333] transition-colors"
+                  aria-label="Twitter"
+                >
+                  <Image
+                    src={'/X.png'}
+                    alt="Twitter"
+                    width={34}
+                    height={34}
+                    className="object-contain"
+                  />
                 </a>
               </div>
             </div>
@@ -104,7 +132,10 @@ export default function Footer() {
                       <Link
                         href={link.href}
                         className="text-[#D4D4D4] text-sm hover:text-white transition-colors"
-                        style={{ fontFamily: "var(--font-neue-montreal)", fontWeight: 400 }}
+                        style={{
+                          fontFamily: "var(--font-neue-montreal)",
+                          fontWeight: 400,
+                        }}
                       >
                         {link.label}
                       </Link>
@@ -128,11 +159,19 @@ export default function Footer() {
             © 2026 Unique Collection. All rights reserved.
           </p>
           <div className="flex items-center gap-3">
-            <Link href="/privacy" className="text-[#D4D4D4] text-sm hover:text-white transition-colors" style={{ fontFamily: "var(--font-neue-montreal)" }}>
+            <Link
+              href="/privacy"
+              className="text-[#D4D4D4] text-sm hover:text-white transition-colors"
+              style={{ fontFamily: "var(--font-neue-montreal)" }}
+            >
               Privacy Policy
             </Link>
             <span className="text-[#737373]">•</span>
-            <Link href="/terms" className="text-[#D4D4D4] text-sm hover:text-white transition-colors" style={{ fontFamily: "var(--font-neue-montreal)" }}>
+            <Link
+              href="/terms"
+              className="text-[#D4D4D4] text-sm hover:text-white transition-colors"
+              style={{ fontFamily: "var(--font-neue-montreal)" }}
+            >
               Terms & Conditions
             </Link>
           </div>
@@ -150,7 +189,12 @@ export default function Footer() {
             Accepted Payment Method
           </span>
           {paymentCards.map((src, i) => (
-            <img key={i} src={src} alt={`Payment method ${i + 1}`} className="h-[24px] w-[38px] object-contain" />
+            <img
+              key={i}
+              src={src}
+              alt={`Payment method ${i + 1}`}
+              className="h-[24px] w-[38px] object-contain"
+            />
           ))}
         </div>
       </div>

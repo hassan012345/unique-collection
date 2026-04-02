@@ -3,7 +3,8 @@
 import { useState } from "react";
 import Link from "next/link";
 
-const heroImageUrl = "https://www.figma.com/api/mcp/asset/1d94d4f1-adb6-4196-a7cc-6c43a1e3a98f";
+// local copy from public/ (downloaded from Figma)
+const heroImageUrl = "/HeroSection.png";
 
 const slides = [
   {

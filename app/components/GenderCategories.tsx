@@ -2,12 +2,10 @@
 
 import Link from "next/link";
 
-const menImageUrl =
-  "https://www.figma.com/api/mcp/asset/5669cdbc-f71b-43aa-ab0c-dd359ec9eb77";
-const womenImageUrl =
-  "https://www.figma.com/api/mcp/asset/acd4fe90-281f-479b-b65e-bb58b8ed03f1";
-const arrowUrl =
-  "https://www.figma.com/api/mcp/asset/eb2d4241-8674-40c9-bf7e-1d5a59369259";
+// local copies from public/ (downloaded from Figma)
+const menImageUrl = "/men.png";
+const womenImageUrl = "/women.png";
+const arrowUrl = "/assets/arrow-right.svg"; // add your own arrow icon in public/assets/arrow-right.svg or replace with SVG component
 
 function ArrowRight() {
   return (

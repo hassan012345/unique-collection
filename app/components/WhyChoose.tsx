@@ -1,9 +1,10 @@
 "use client";
 
-const groupIconUrl = "https://www.figma.com/api/mcp/asset/e76815e7-d381-42c5-bfb0-b3e2468f88a0";
-const needleUrl = "https://www.figma.com/api/mcp/asset/4a700dba-af1e-4748-b4b1-e83472068fc1";
-const yogaMatUrl = "https://www.figma.com/api/mcp/asset/210fcd02-9592-4fce-95dd-36bb69b09c50";
-const deliveryTruckUrl = "https://www.figma.com/api/mcp/asset/840a5f65-521a-4c3c-9c2a-a74231d12d06";
+// local copies from public/
+const groupIconUrl = "/file.svg";
+const needleUrl = "/globe.svg";
+const yogaMatUrl = "/window.svg";
+const deliveryTruckUrl = "/next.svg";
 
 const features = [
   {

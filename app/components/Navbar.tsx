@@ -205,7 +205,10 @@ export default function Navbar() {
   return (
     <nav ref={navRef} className="w-full bg-[#184335] sticky top-0 z-50">
       {/* ── Desktop bar ─────────────────────────────────────────── */}
-      <div className="hidden lg:flex max-w-[1440px] mx-auto px-20 py-4 items-center justify-between relative">
+      <div
+        className="hidden lg:flex max-w-[1440px] mx-auto px-20 py-4 items-center justify-between relative"
+        onMouseLeave={() => setActiveDropdown(null)}
+      >
         {/* Logo */}
         <Link href="/" className="shrink-0">
           <img src={logoUrl} alt="Unique Collection" className="h-[31px] w-auto" />
@@ -218,7 +221,6 @@ export default function Navbar() {
               key={item.label}
               className="relative"
               onMouseEnter={() => handleNavHover(item.label)}
-              onMouseLeave={() => setActiveDropdown(null)}
             >
               <Link
                 href={item.href}

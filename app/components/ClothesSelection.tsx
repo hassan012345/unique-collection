@@ -95,10 +95,12 @@ function ClothesSelection({ title, products, filters, viewAllHref }: ClothesSele
           {/* Scrollable row */}
           <div
             ref={scrollRef}
-            className="flex gap-5 lg:gap-6 overflow-x-auto scrollbar-hide px-8 lg:px-10"
+            className="flex items-start w-full gap-5 lg:gap-6 overflow-x-auto scrollbar-hide px-8 lg:px-10"
           >
             {products.map((p) => (
-              <ProductCard key={p.id} product={p} />
+              <div key={p.id} className="flex-shrink-0 min-w-[220px] sm:min-w-[240px] md:min-w-[280px]">
+                <ProductCard product={p} />
+              </div>
             ))}
           </div>
 

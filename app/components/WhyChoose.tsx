@@ -1,29 +1,23 @@
 "use client";
 
-// local copies from public/
-const groupIconUrl = "/file.svg";
-const needleUrl = "/globe.svg";
-const yogaMatUrl = "/window.svg";
-const deliveryTruckUrl = "/next.svg";
-
 const features = [
   {
-    icon: groupIconUrl,
+    icon: '/AITryOn.png', 
     title: "AI Try-On",
     description: "Try AI Feature for your picks.",
   },
   {
-    icon: needleUrl,
+    icon: '/CustomStitching.png',
     title: "Custom Stitching",
     description: "Easily custom stitched.",
   },
   {
-    icon: yogaMatUrl,
+    icon: '/FastDelivery.png',
     title: "Fast Delivery",
     description: "Delivered fast. Always.",
   },
   {
-    icon: deliveryTruckUrl,
+    icon: '/QualityFabrics.png',
     title: "Quality Fabrics",
     description: "Provided with quality fabrics.",
   },

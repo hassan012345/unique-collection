@@ -3,7 +3,7 @@
 import Link from "next/link";
 
 // local copy from public/ (downloaded from Figma)
-const ctaBgUrl = "/hero-background.png";
+const ctaBgUrl = "/CTA.png";
 
 export default function CTAMiddle() {
   return (

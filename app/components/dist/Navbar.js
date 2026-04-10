@@ -3,6 +3,7 @@
 exports.__esModule = true;
 var react_1 = require("react");
 var link_1 = require("next/link");
+var Cart_1 = require("@/components/Cart");
 var logoUrl = "/Logo.png";
 // ── Dropdown data (from Figma screenshots) ────────────────────────
 var DROPDOWNS = {
@@ -10,11 +11,26 @@ var DROPDOWNS = {
         columns: [
             {
                 heading: "Men's Collection",
-                links: ["New Arrival", "Sale", "Unstitched", "Shalwaar Kameez", "Kurtas", "Waist Coats", "3-Piece Suits", "Blazers"]
+                links: [
+                    "New Arrival",
+                    "Sale",
+                    "Unstitched",
+                    "Shalwaar Kameez",
+                    "Kurtas",
+                    "Waist Coats",
+                    "3-Piece Suits",
+                    "Blazers",
+                ]
             },
             {
                 heading: "Women's Collection",
-                links: ["New Arrival", "Sale", "Unstitched", "Shalwaar Kameez", "Kurtas"]
+                links: [
+                    "New Arrival",
+                    "Sale",
+                    "Unstitched",
+                    "Shalwaar Kameez",
+                    "Kurtas",
+                ]
             },
         ]
     },
@@ -22,7 +38,16 @@ var DROPDOWNS = {
         columns: [
             {
                 heading: "Men's Collection",
-                links: ["New Arrival", "Sale", "Unstitched", "Shalwaar Kameez", "Kurtas", "Waist Coats", "3-Piece Suits", "Blazers"]
+                links: [
+                    "New Arrival",
+                    "Sale",
+                    "Unstitched",
+                    "Shalwaar Kameez",
+                    "Kurtas",
+                    "Waist Coats",
+                    "3-Piece Suits",
+                    "Blazers",
+                ]
             },
         ]
     },
@@ -30,7 +55,13 @@ var DROPDOWNS = {
         columns: [
             {
                 heading: "Women's Collection",
-                links: ["New Arrival", "Sale", "Unstitched", "Shalwaar Kameez", "Kurtas"]
+                links: [
+                    "New Arrival",
+                    "Sale",
+                    "Unstitched",
+                    "Shalwaar Kameez",
+                    "Kurtas",
+                ]
             },
         ]
     }
@@ -45,7 +76,16 @@ var NAV_ITEMS = [
 var MOBILE_SECTIONS = [
     {
         heading: "Men's Collection",
-        links: ["New Arrival", "Sale", "Unstitched", "Shalwaar Kameez", "Kurtas", "Waist Coats", "3-Piece Suits", "Blazers"],
+        links: [
+            "New Arrival",
+            "Sale",
+            "Unstitched",
+            "Shalwaar Kameez",
+            "Kurtas",
+            "Waist Coats",
+            "3-Piece Suits",
+            "Blazers",
+        ],
         href: "/men"
     },
     {
@@ -101,13 +141,17 @@ function MegaDropdown(_a) {
         React.createElement("div", { className: "max-w-[1440px] mx-auto flex gap-20" }, data.columns.map(function (col) { return (React.createElement("div", { key: col.heading, className: "flex flex-col gap-4" },
             React.createElement("h3", { className: "text-white text-base font-semibold", style: { fontFamily: "var(--font-neue-montreal)" } }, col.heading),
             React.createElement("ul", { className: "flex flex-col gap-3" }, col.links.map(function (link) { return (React.createElement("li", { key: link },
-                React.createElement(link_1["default"], { href: "/" + item.toLowerCase() + "/" + link.toLowerCase().replace(/\s+/g, "-"), className: "text-[#B7C5C0] text-sm hover:text-white transition-colors", style: { fontFamily: "var(--font-neue-montreal)", fontWeight: 400 } }, link))); })))); }))));
+                React.createElement(link_1["default"], { href: "/" + item.toLowerCase() + "/" + link.toLowerCase().replace(/\s+/g, "-"), className: "text-[#B7C5C0] text-sm hover:text-white transition-colors", style: {
+                        fontFamily: "var(--font-neue-montreal)",
+                        fontWeight: 400
+                    } }, link))); })))); }))));
 }
 // ── Main Navbar ────────────────────────────────────────────────────
 function Navbar() {
     var _a = react_1.useState(null), activeDropdown = _a[0], setActiveDropdown = _a[1];
     var _b = react_1.useState(false), mobileOpen = _b[0], setMobileOpen = _b[1];
     var navRef = react_1.useRef(null);
+    var _c = react_1.useState(false), isCartOpen = _c[0], setIsCartOpen = _c[1];
     // Close dropdown when clicking outside
     react_1.useEffect(function () {
         function handleClickOutside(e) {
@@ -139,17 +183,23 @@ function Navbar() {
             React.createElement(link_1["default"], { href: "/", className: "shrink-0" },
                 React.createElement("img", { src: logoUrl, alt: "Unique Collection", className: "h-[31px] w-auto" })),
             React.createElement("div", { className: "flex items-center gap-16" }, NAV_ITEMS.map(function (item) { return (React.createElement("div", { key: item.label, className: "relative", onMouseEnter: function () { return handleNavHover(item.label); } },
-                React.createElement(link_1["default"], { href: item.href, className: "flex items-center gap-1 text-sm transition-colors " + (activeDropdown === item.label ? "text-white" : "text-white/80 hover:text-white"), style: { fontFamily: "var(--font-neue-montreal)", fontWeight: 400 } },
+                React.createElement(link_1["default"], { href: item.href, className: "flex items-center gap-1 text-sm transition-colors " + (activeDropdown === item.label
+                        ? "text-white"
+                        : "text-white/80 hover:text-white"), style: {
+                        fontFamily: "var(--font-neue-montreal)",
+                        fontWeight: 400
+                    } },
                     item.label,
-                    item.hasDropdown && React.createElement(ChevronDown, { open: activeDropdown === item.label })),
+                    item.hasDropdown && (React.createElement(ChevronDown, { open: activeDropdown === item.label }))),
                 activeDropdown === item.label && (React.createElement("span", { className: "absolute -bottom-[17px] left-0 right-0 h-[2px] bg-white rounded-full" })))); })),
             React.createElement("div", { className: "flex items-center gap-5" },
                 React.createElement("button", { className: "text-white hover:text-white/70 transition-colors", "aria-label": "Search" },
                     React.createElement(SearchIcon, null)),
                 React.createElement("button", { className: "text-white hover:text-white/70 transition-colors", "aria-label": "Account" },
                     React.createElement(UserIcon, null)),
-                React.createElement("button", { className: "text-white hover:text-white/70 transition-colors", "aria-label": "Cart" },
-                    React.createElement(CartIcon, { count: 2 })))),
+                React.createElement("button", { onClick: function () { return setIsCartOpen(true); }, className: "text-white hover:text-white/70 transition-colors", "aria-label": "Cart" },
+                    React.createElement(CartIcon, { count: 2 })),
+                React.createElement(Cart_1["default"], { isOpen: isCartOpen, onClose: function () { return setIsCartOpen(false); } }))),
         activeDropdown && (React.createElement("div", { onMouseEnter: function () { return setActiveDropdown(activeDropdown); }, onMouseLeave: function () { return setActiveDropdown(null); }, className: "hidden lg:block" },
             React.createElement(MegaDropdown, { item: activeDropdown }))),
         React.createElement("div", { className: "lg:hidden flex items-center justify-between px-5 py-4" },
@@ -167,7 +217,10 @@ function Navbar() {
                 MOBILE_SECTIONS.map(function (section) { return (React.createElement("div", { key: section.heading, className: "flex flex-col gap-3" },
                     React.createElement(link_1["default"], { href: section.href, className: "text-white text-lg font-semibold", style: { fontFamily: "var(--font-neue-montreal)" }, onClick: function () { return setMobileOpen(false); } }, section.heading),
                     section.links.length > 0 && (React.createElement("ul", { className: "flex flex-col gap-3 pl-1" }, section.links.map(function (link) { return (React.createElement("li", { key: link },
-                        React.createElement(link_1["default"], { href: "/" + section.href.replace("/", "") + "/" + link.toLowerCase().replace(/\s+/g, "-"), className: "text-[#B7C5C0] text-sm hover:text-white transition-colors", style: { fontFamily: "var(--font-neue-montreal)", fontWeight: 400 }, onClick: function () { return setMobileOpen(false); } }, link))); }))))); }),
+                        React.createElement(link_1["default"], { href: "/" + section.href.replace("/", "") + "/" + link.toLowerCase().replace(/\s+/g, "-"), className: "text-[#B7C5C0] text-sm hover:text-white transition-colors", style: {
+                                fontFamily: "var(--font-neue-montreal)",
+                                fontWeight: 400
+                            }, onClick: function () { return setMobileOpen(false); } }, link))); }))))); }),
                 React.createElement("div", { className: "border-t border-[#245749] pt-4" },
                     React.createElement(link_1["default"], { href: "/tailoring", className: "text-white text-lg font-semibold", style: { fontFamily: "var(--font-neue-montreal)" }, onClick: function () { return setMobileOpen(false); } }, "Custom Tailoring")),
                 React.createElement("div", { className: "border-t border-[#245749] pt-4 flex items-center gap-5" },

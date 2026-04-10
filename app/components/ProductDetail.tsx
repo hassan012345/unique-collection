@@ -4,6 +4,10 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import BreadCrumb from "./BreadCrumb";
+import ShowMore from "./SeeMore";
+import DeliveryInfo from "./DeliveryInfo";
+import ProductReviews from "./Reviews";
+import reviews from "@/lib/data/reviews";
 
 interface ProductDetailProps {
   product: {
@@ -20,18 +24,21 @@ interface ProductDetailProps {
     colors?: { name: string; code: string }[];
     sizes?: string[];
   };
+  previewLines?: number;
   relatedProducts?: any[];
 }
 
 export default function ProductDetail({
   product,
   relatedProducts = [],
+  previewLines = 13,
 }: ProductDetailProps) {
   const [selectedColor, setSelectedColor] = useState(
     product.colors?.[0]?.name || "",
   );
   const [selectedSize, setSelectedSize] = useState(product.sizes?.[0] || "");
   const [quantity, setQuantity] = useState(1);
+  const [unlocked, setUnlocked] = useState(false);
   const [activeImageIndex, setActiveImageIndex] = useState(0);
   const [isFavorite, setIsFavorite] = useState(false);
 
@@ -284,171 +291,45 @@ export default function ProductDetail({
                 Buy Now
               </button>
 
-              {/* Additional Info */}
-              <div className="pt-4 border-t border-neutral-200">
-                <div className="space-y-3 text-sm">
-                  <div className="flex items-center gap-2">
-                    <svg
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      className="text-green-500 flex-shrink-0"
-                    >
-                      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                      <polyline points="22 4 12 14.01 9 11.01" />
-                    </svg>
-                    <span className="text-neutral-600">
-                      Free shipping on orders over PKR 5,000
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <svg
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      className="text-green-500 flex-shrink-0"
-                    >
-                      <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-                      <polyline points="9 22 9 12 15 12 15 22" />
-                    </svg>
-                    <span className="text-neutral-600">
-                      30-day return policy
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <svg
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      className="text-green-500 flex-shrink-0"
-                    >
-                      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z" />
-                    </svg>
-                    <span className="text-neutral-600">
-                      Easy returns & exchanges
-                    </span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Share */}
-              <div className="pt-4 border-t border-neutral-200">
-                <p className="text-sm font-semibold text-neutral-900 mb-3">
-                  Share:
+              <ShowMore
+                lines={previewLines}
+                label="Read More"
+                collapseLabel="Show Less"
+                className="text-neutral-600 leading-relaxed"
+              >
+                <p>Gender:  Men</p>
+                <p>Category:  Clothing </p>
+                <p>Outfit Type:  Eastern</p>
+                <p>Sub-Category:  Shalwar Kameez </p>
+                <p>Bottom Style:  Loose-Fit </p>
+                <p>Color Type:  Olive Green </p>
+                <p>Fabric:  Wash & Wear </p>
+                <p>Number of Pieces:  2 Piece - Top & Bottom </p>
+                <p>Product Type:  Daily/Basic </p>
+                <p>Wear Season: Summer Wear </p>
+                <p>Top Style:  Straight-Cut </p>
+                <p>
+                  Additional Description: Blended Exclusive kameez shalwar
+                  crafted with premium wash n wear fabric. Disclaimer:  Actual
+                  product color may vary slightly from the image.
                 </p>
-                <div className="flex gap-2">
-                  {[
-                    { icon: "facebook", label: "Facebook" },
-                    { icon: "twitter", label: "Twitter" },
-                    { icon: "pinterest", label: "Pinterest" },
-                    { icon: "whatsapp", label: "WhatsApp" },
-                  ].map((social) => (
-                    <button
-                      key={social.icon}
-                      className="w-10 h-10 rounded-lg border-2 border-neutral-300 hover:border-green-500 hover:text-green-500 transition-colors flex items-center justify-center text-neutral-600"
-                      title={social.label}
-                    >
-                      <svg
-                        width="18"
-                        height="18"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                      >
-                        <circle cx="12" cy="12" r="1" />
-                      </svg>
-                    </button>
-                  ))}
-                </div>
-              </div>
+              </ShowMore>
+
+              <DeliveryInfo />
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* Product Details & Reviews Tabs */}
-      <section className="border-t border-neutral-200 py-12 md:py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
-            {/* Left: Description */}
-            <div className="md:col-span-2">
-              <h2 className="text-2xl font-semibold text-neutral-900 mb-4">
-                Product Details
-              </h2>
-              {product.description && (
-                <p className="text-neutral-600 leading-relaxed mb-6">
-                  {product.description}
-                </p>
-              )}
-
-              {product.details && product.details.length > 0 && (
-                <div className="mt-6">
-                  <h3 className="text-lg font-semibold text-neutral-900 mb-4">
-                    Features
-                  </h3>
-                  <ul className="space-y-3">
-                    {product.details.map((detail, idx) => (
-                      <li key={idx} className="flex gap-3 text-neutral-600">
-                        <svg
-                          width="20"
-                          height="20"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          className="text-green-500 flex-shrink-0 mt-0.5"
-                        >
-                          <polyline points="20 6 9 17 4 12" />
-                        </svg>
-                        {detail}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-            </div>
-
-            {/* Right: Quick Info */}
-            <div className="bg-neutral-50 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-neutral-900 mb-4">
-                Product Information
-              </h3>
-              <div className="space-y-4">
-                <div>
-                  <p className="text-sm text-neutral-600 mb-1">SKU</p>
-                  <p className="font-semibold text-neutral-900">
-                    UC-MEN-{String(product.id).padStart(4, "0")}
-                  </p>
-                </div>
-                <div>
-                  <p className="text-sm text-neutral-600 mb-1">Category</p>
-                  <p className="font-semibold text-neutral-900">
-                    Men's Collection
-                  </p>
-                </div>
-                <div>
-                  <p className="text-sm text-neutral-600 mb-1">Availability</p>
-                  <p className="font-semibold text-green-500">In Stock</p>
-                </div>
-                <div>
-                  <p className="text-sm text-neutral-600 mb-1">Delivery Time</p>
-                  <p className="font-semibold text-neutral-900">
-                    3-5 Business Days
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
+          <ProductReviews
+            average={3.0}
+            total={234}
+            breakdown={[
+              { stars: 5, count: 203 },
+              { stars: 4, count: 156 },
+              { stars: 3, count: 13 },
+              { stars: 2, count: 3 },
+              { stars: 1, count: 0 },
+            ]}
+            items={reviews}
+          />
         </div>
       </section>
 

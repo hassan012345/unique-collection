@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
+import CartDrawer from "@/components/Cart";
 
 const logoUrl = "/Logo.png";
 
@@ -11,11 +12,26 @@ const DROPDOWNS = {
     columns: [
       {
         heading: "Men's Collection",
-        links: ["New Arrival", "Sale", "Unstitched", "Shalwaar Kameez", "Kurtas", "Waist Coats", "3-Piece Suits", "Blazers"],
+        links: [
+          "New Arrival",
+          "Sale",
+          "Unstitched",
+          "Shalwaar Kameez",
+          "Kurtas",
+          "Waist Coats",
+          "3-Piece Suits",
+          "Blazers",
+        ],
       },
       {
         heading: "Women's Collection",
-        links: ["New Arrival", "Sale", "Unstitched", "Shalwaar Kameez", "Kurtas"],
+        links: [
+          "New Arrival",
+          "Sale",
+          "Unstitched",
+          "Shalwaar Kameez",
+          "Kurtas",
+        ],
       },
     ],
   },
@@ -23,7 +39,16 @@ const DROPDOWNS = {
     columns: [
       {
         heading: "Men's Collection",
-        links: ["New Arrival", "Sale", "Unstitched", "Shalwaar Kameez", "Kurtas", "Waist Coats", "3-Piece Suits", "Blazers"],
+        links: [
+          "New Arrival",
+          "Sale",
+          "Unstitched",
+          "Shalwaar Kameez",
+          "Kurtas",
+          "Waist Coats",
+          "3-Piece Suits",
+          "Blazers",
+        ],
       },
     ],
   },
@@ -31,7 +56,13 @@ const DROPDOWNS = {
     columns: [
       {
         heading: "Women's Collection",
-        links: ["New Arrival", "Sale", "Unstitched", "Shalwaar Kameez", "Kurtas"],
+        links: [
+          "New Arrival",
+          "Sale",
+          "Unstitched",
+          "Shalwaar Kameez",
+          "Kurtas",
+        ],
       },
     ],
   },
@@ -40,9 +71,9 @@ const DROPDOWNS = {
 type NavItemKey = keyof typeof DROPDOWNS;
 
 const NAV_ITEMS: { label: string; href: string; hasDropdown: boolean }[] = [
-  { label: "Sale",             href: "/sale",      hasDropdown: true  },
-  { label: "Men",              href: "/men",       hasDropdown: true  },
-  { label: "Women",            href: "/women",     hasDropdown: true  },
+  { label: "Sale", href: "/sale", hasDropdown: true },
+  { label: "Men", href: "/men", hasDropdown: true },
+  { label: "Women", href: "/women", hasDropdown: true },
   { label: "Custom Tailoring", href: "/tailoring", hasDropdown: false },
 ];
 
@@ -50,7 +81,16 @@ const NAV_ITEMS: { label: string; href: string; hasDropdown: boolean }[] = [
 const MOBILE_SECTIONS = [
   {
     heading: "Men's Collection",
-    links: ["New Arrival", "Sale", "Unstitched", "Shalwaar Kameez", "Kurtas", "Waist Coats", "3-Piece Suits", "Blazers"],
+    links: [
+      "New Arrival",
+      "Sale",
+      "Unstitched",
+      "Shalwaar Kameez",
+      "Kurtas",
+      "Waist Coats",
+      "3-Piece Suits",
+      "Blazers",
+    ],
     href: "/men",
   },
   {
@@ -69,10 +109,19 @@ const MOBILE_SECTIONS = [
 function ChevronDown({ open }: { open?: boolean }) {
   return (
     <svg
-      width="12" height="12" viewBox="0 0 12 12" fill="none"
+      width="12"
+      height="12"
+      viewBox="0 0 12 12"
+      fill="none"
       className={`transition-transform duration-200 ${open ? "rotate-180" : ""}`}
     >
-      <path d="M2.5 4L6 7.5L9.5 4" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+      <path
+        d="M2.5 4L6 7.5L9.5 4"
+        stroke="white"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
     </svg>
   );
 }
@@ -80,8 +129,13 @@ function ChevronDown({ open }: { open?: boolean }) {
 function SearchIcon() {
   return (
     <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-      <circle cx="9.5" cy="9.5" r="6.5" stroke="white" strokeWidth="1.8"/>
-      <path d="M14.5 14.5L19 19" stroke="white" strokeWidth="1.8" strokeLinecap="round"/>
+      <circle cx="9.5" cy="9.5" r="6.5" stroke="white" strokeWidth="1.8" />
+      <path
+        d="M14.5 14.5L19 19"
+        stroke="white"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+      />
     </svg>
   );
 }
@@ -89,8 +143,13 @@ function SearchIcon() {
 function UserIcon() {
   return (
     <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-      <circle cx="11" cy="7" r="4" stroke="white" strokeWidth="1.8"/>
-      <path d="M3 19c0-4 3.58-7 8-7s8 3 8 7" stroke="white" strokeWidth="1.8" strokeLinecap="round"/>
+      <circle cx="11" cy="7" r="4" stroke="white" strokeWidth="1.8" />
+      <path
+        d="M3 19c0-4 3.58-7 8-7s8 3 8 7"
+        stroke="white"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+      />
     </svg>
   );
 }
@@ -99,10 +158,15 @@ function CartIcon({ count = 0 }: { count?: number }) {
   return (
     <div className="relative">
       <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-        <path d="M3 3h2l2.68 10.39a2 2 0 001.94 1.61h7.72a2 2 0 001.94-1.51L20.6 7H6"
-          stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-        <circle cx="9" cy="20" r="1.2" fill="white"/>
-        <circle cx="17" cy="20" r="1.2" fill="white"/>
+        <path
+          d="M3 3h2l2.68 10.39a2 2 0 001.94 1.61h7.72a2 2 0 001.94-1.51L20.6 7H6"
+          stroke="white"
+          strokeWidth="1.8"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <circle cx="9" cy="20" r="1.2" fill="white" />
+        <circle cx="17" cy="20" r="1.2" fill="white" />
       </svg>
       {count > 0 && (
         <span className="absolute -top-1.5 -right-1.5 bg-[#FFB86A] text-black text-[9px] font-bold rounded-full w-4 h-4 flex items-center justify-center leading-none">
@@ -118,14 +182,54 @@ function HamburgerIcon({ open }: { open: boolean }) {
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
       {open ? (
         <>
-          <line x1="4" y1="4" x2="20" y2="20" stroke="white" strokeWidth="2" strokeLinecap="round"/>
-          <line x1="20" y1="4" x2="4" y2="20" stroke="white" strokeWidth="2" strokeLinecap="round"/>
+          <line
+            x1="4"
+            y1="4"
+            x2="20"
+            y2="20"
+            stroke="white"
+            strokeWidth="2"
+            strokeLinecap="round"
+          />
+          <line
+            x1="20"
+            y1="4"
+            x2="4"
+            y2="20"
+            stroke="white"
+            strokeWidth="2"
+            strokeLinecap="round"
+          />
         </>
       ) : (
         <>
-          <line x1="3" y1="6"  x2="21" y2="6"  stroke="white" strokeWidth="2" strokeLinecap="round"/>
-          <line x1="3" y1="12" x2="21" y2="12" stroke="white" strokeWidth="2" strokeLinecap="round"/>
-          <line x1="3" y1="18" x2="21" y2="18" stroke="white" strokeWidth="2" strokeLinecap="round"/>
+          <line
+            x1="3"
+            y1="6"
+            x2="21"
+            y2="6"
+            stroke="white"
+            strokeWidth="2"
+            strokeLinecap="round"
+          />
+          <line
+            x1="3"
+            y1="12"
+            x2="21"
+            y2="12"
+            stroke="white"
+            strokeWidth="2"
+            strokeLinecap="round"
+          />
+          <line
+            x1="3"
+            y1="18"
+            x2="21"
+            y2="18"
+            stroke="white"
+            strokeWidth="2"
+            strokeLinecap="round"
+          />
         </>
       )}
     </svg>
@@ -155,7 +259,10 @@ function MegaDropdown({ item }: { item: NavItemKey }) {
                   <Link
                     href={`/${item.toLowerCase()}/${link.toLowerCase().replace(/\s+/g, "-")}`}
                     className="text-[#B7C5C0] text-sm hover:text-white transition-colors"
-                    style={{ fontFamily: "var(--font-neue-montreal)", fontWeight: 400 }}
+                    style={{
+                      fontFamily: "var(--font-neue-montreal)",
+                      fontWeight: 400,
+                    }}
                   >
                     {link}
                   </Link>
@@ -174,6 +281,7 @@ export default function Navbar() {
   const [activeDropdown, setActiveDropdown] = useState<NavItemKey | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
   const navRef = useRef<HTMLElement>(null);
+  const [isCartOpen, setIsCartOpen] = useState(false);
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -211,7 +319,11 @@ export default function Navbar() {
       >
         {/* Logo */}
         <Link href="/" className="shrink-0">
-          <img src={logoUrl} alt="Unique Collection" className="h-[31px] w-auto" />
+          <img
+            src={logoUrl}
+            alt="Unique Collection"
+            className="h-[31px] w-auto"
+          />
         </Link>
 
         {/* Nav links */}
@@ -225,12 +337,19 @@ export default function Navbar() {
               <Link
                 href={item.href}
                 className={`flex items-center gap-1 text-sm transition-colors ${
-                  activeDropdown === item.label ? "text-white" : "text-white/80 hover:text-white"
+                  activeDropdown === item.label
+                    ? "text-white"
+                    : "text-white/80 hover:text-white"
                 }`}
-                style={{ fontFamily: "var(--font-neue-montreal)", fontWeight: 400 }}
+                style={{
+                  fontFamily: "var(--font-neue-montreal)",
+                  fontWeight: 400,
+                }}
               >
                 {item.label}
-                {item.hasDropdown && <ChevronDown open={activeDropdown === item.label} />}
+                {item.hasDropdown && (
+                  <ChevronDown open={activeDropdown === item.label} />
+                )}
               </Link>
 
               {/* Underline indicator */}
@@ -243,15 +362,29 @@ export default function Navbar() {
 
         {/* Icons */}
         <div className="flex items-center gap-5">
-          <button className="text-white hover:text-white/70 transition-colors" aria-label="Search">
+          <button
+            className="text-white hover:text-white/70 transition-colors"
+            aria-label="Search"
+          >
             <SearchIcon />
           </button>
-          <button className="text-white hover:text-white/70 transition-colors" aria-label="Account">
+          <button
+            className="text-white hover:text-white/70 transition-colors"
+            aria-label="Account"
+          >
             <UserIcon />
           </button>
-          <button className="text-white hover:text-white/70 transition-colors" aria-label="Cart">
+          <button
+            onClick={() => setIsCartOpen(true)}
+            className="text-white hover:text-white/70 transition-colors"
+            aria-label="Cart"
+          >
             <CartIcon count={2} />
           </button>
+          <CartDrawer
+            isOpen={isCartOpen}
+            onClose={() => setIsCartOpen(false)}
+          />
         </div>
       </div>
 
@@ -272,8 +405,12 @@ export default function Navbar() {
           <img src={logoUrl} alt="Unique Collection" className="h-7 w-auto" />
         </Link>
         <div className="flex items-center gap-4">
-          <button className="text-white" aria-label="Search"><SearchIcon /></button>
-          <button className="text-white" aria-label="Cart"><CartIcon count={2} /></button>
+          <button className="text-white" aria-label="Search">
+            <SearchIcon />
+          </button>
+          <button className="text-white" aria-label="Cart">
+            <CartIcon count={2} />
+          </button>
           <button
             className="text-white"
             onClick={() => setMobileOpen(!mobileOpen)}
@@ -308,7 +445,10 @@ export default function Navbar() {
                         <Link
                           href={`/${section.href.replace("/", "")}/${link.toLowerCase().replace(/\s+/g, "-")}`}
                           className="text-[#B7C5C0] text-sm hover:text-white transition-colors"
-                          style={{ fontFamily: "var(--font-neue-montreal)", fontWeight: 400 }}
+                          style={{
+                            fontFamily: "var(--font-neue-montreal)",
+                            fontWeight: 400,
+                          }}
                           onClick={() => setMobileOpen(false)}
                         >
                           {link}
@@ -334,10 +474,18 @@ export default function Navbar() {
 
             {/* Account icon links */}
             <div className="border-t border-[#245749] pt-4 flex items-center gap-5">
-              <Link href="/account" onClick={() => setMobileOpen(false)} aria-label="Account">
+              <Link
+                href="/account"
+                onClick={() => setMobileOpen(false)}
+                aria-label="Account"
+              >
                 <UserIcon />
               </Link>
-              <Link href="/search" onClick={() => setMobileOpen(false)} aria-label="Search">
+              <Link
+                href="/search"
+                onClick={() => setMobileOpen(false)}
+                aria-label="Search"
+              >
                 <SearchIcon />
               </Link>
             </div>

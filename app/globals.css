@@ -83,3 +83,30 @@ html {
   color: #184335;
   background-color: #f5f8f7;
 }
+
+
+@layer components {
+  .heading-1 {
+    @apply text-h1 font-sans;
+  }
+
+  .heading-2 {
+    @apply text-h2 font-sans;
+  }
+
+  .heading-3 {
+    @apply text-h3 font-sans;
+  }
+
+  .heading-4 {
+    @apply text-h4 font-sans;
+  }
+
+  .body-text {
+    @apply text-body font-sans;
+  }
+
+  .small-text {
+    @apply text-small font-sans;
+  }
+}

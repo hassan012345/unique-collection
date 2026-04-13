@@ -46,6 +46,12 @@ const config: Config = {
         "32": ["32px", { lineHeight: "1.5", letterSpacing: "0" }],
         "48": ["48px", { lineHeight: "1.5", letterSpacing: "0" }],
         "64": ["64px", { lineHeight: "69px", letterSpacing: "0" }],
+        h1: ["48px", { lineHeight: "56px", fontWeight: "700" }],
+        h2: ["40px", { lineHeight: "48px", fontWeight: "700" }],
+        h3: ["32px", { lineHeight: "40px", fontWeight: "600" }],
+        h4: ["24px", { lineHeight: "32px", fontWeight: "600" }],
+        body: ["16px", { lineHeight: "24px" }],
+        small: ["14px", { lineHeight: "20px" }],
       },
       spacing: {
         "space-xs": "4px",

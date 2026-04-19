@@ -1,7 +1,4 @@
-import TopToast from "@/components/TopToast";
-import Navbar from "@/components/Navbar";
 import ProductDetail from "@/components/ProductDetail";
-import Footer from "@/components/Footer";
 import { MEN_PRODUCTS } from "@/config/products";
 
 interface PageProps {
@@ -26,21 +23,16 @@ export default function ProductPage({ params }: PageProps) {
 
   if (!product) {
     return (
-      <main className="min-h-screen flex flex-col">
-        <TopToast />
-        <Navbar />
-        <div className="flex-1 flex items-center justify-center py-12">
-          <div className="text-center">
-            <h1 className="text-2xl font-semibold text-neutral-900 mb-2">
-              Product Not Found
-            </h1>
-            <p className="text-neutral-600">
-              The product you're looking for doesn't exist.
-            </p>
-          </div>
+      <div className="flex-1 flex items-center justify-center py-12">
+        <div className="text-center">
+          <h1 className="text-2xl font-semibold text-neutral-900 mb-2">
+            Product Not Found
+          </h1>
+          <p className="text-neutral-600">
+            The product you're looking for doesn't exist.
+          </p>
         </div>
-        <Footer />
-      </main>
+      </div>
     );
   }
 
@@ -80,11 +72,6 @@ export default function ProductPage({ params }: PageProps) {
   ).slice(0, 8);
 
   return (
-    <main className="min-h-screen flex flex-col bg-white">
-      <TopToast />
-      <Navbar />
-      <ProductDetail product={enhancedProduct} relatedProducts={relatedProducts} />
-      <Footer />
-    </main>
+    <ProductDetail product={enhancedProduct} relatedProducts={relatedProducts} />
   );
 }

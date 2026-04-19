@@ -109,11 +109,7 @@ function CheckoutPage() {
     }
     // ── Render ───────────────────────────────────────────────────────
     return (React.createElement("div", { className: "min-h-screen bg-white" },
-        React.createElement(BreadCrumb_1["default"], { items: [
-                { label: "Home", href: "/" },
-                { label: "Cart", href: "/cart" },
-                { label: "Checkout", href: "/checkout" },
-            ] }),
+        React.createElement(BreadCrumb_1["default"], null),
         React.createElement("div", { className: "px-6 py-5 md:px-20 md:py-8" },
             React.createElement("div", { className: "lg:hidden sticky top-0 z-30 bg-[#F5F5F5] border-b border-[#E5E5E5] px-5 py-3\n        flex items-center justify-between" },
                 React.createElement("p", { className: "text-[15px] font-semibold text-[#171717] bg-[#F5F5F5]", style: { fontFamily: NM } }, "Total"),

@@ -10,10 +10,7 @@
  *   Pills     → the `pills` array below
  */
 
-import TopToast from "@/components/TopToast";
-import Navbar from "@/components/Navbar";
 import ProductListingPage from "@/components/ProductsListing";
-import Footer from "@/components/Footer";
 import { WOMEN_PRODUCTS } from "@/config/products";
 import { WOMEN_FILTER_GROUPS } from "@/config/filters";
 
@@ -36,23 +33,12 @@ export const metadata = {
 
 export default function WomenPage() {
   return (
-    <main className="min-h-screen flex flex-col bg-white">
-      <TopToast />
-      <Navbar />
-      <div className="flex-1">
-        <ProductListingPage
-          title="Women's Collection"
-          description="Elegant women's clothing crafted with premium fabrics — ready-made & custom stitched."
-          breadcrumbs={[
-            { label: "Home",              href: "/"      },
-            { label: "Women's Collection"                },
-          ]}
-          products={WOMEN_PRODUCTS}
-          filterOptions={FILTER_OPTIONS}
-          pills={PILLS}
-        />
-      </div>
-      <Footer />
-    </main>
+    <ProductListingPage
+      title="Women's Collection"
+      description="Elegant women's clothing crafted with premium fabrics — ready-made & custom stitched."
+      products={WOMEN_PRODUCTS}
+      filterOptions={FILTER_OPTIONS}
+      pills={PILLS}
+    />
   );
 }

@@ -5,10 +5,7 @@
  * To change products       → config/products.ts → MEN_PRODUCTS
  */
 
-import TopToast from "@/components/TopToast";
-import Navbar from "@/components/Navbar";
 import ProductListingPage from "@/components/ProductsListing";
-import Footer from "@/components/Footer";
 import { MEN_PRODUCTS } from "@/config/products";
 
 const OPTIONS = [
@@ -32,23 +29,12 @@ export const metadata = {
 
 export default function MenPage() {
   return (
-    <main className="min-h-screen flex flex-col bg-white">
-      <TopToast />
-      <Navbar />
-      <div className="flex-1">
-        <ProductListingPage
-          title="Men's Collection"
-          description="Premium men's clothing crafted for comfort and confidence."
-          breadcrumbs={[
-            { label: "Home", href: "/" },
-            { label: "Men's Collection"  },
-          ]}
-          products={MEN_PRODUCTS}
-          filterOptions={OPTIONS}
-          pills={PILLS}
-        />
-      </div>
-      <Footer />
-    </main>
+    <ProductListingPage
+      title="Men's Collection"
+      description="Premium men's clothing crafted for comfort and confidence."
+      products={MEN_PRODUCTS}
+      filterOptions={OPTIONS}
+      pills={PILLS}
+    />
   );
 }

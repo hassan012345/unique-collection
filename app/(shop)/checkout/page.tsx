@@ -9,6 +9,7 @@ import PaymentOptions, { type PaymentData } from "@/components/PaymentOptions";
 import OrderSummary, { type CartItem } from "@/components/OrderSummary";
 import { useCartStore } from "@/store/cartStore";
 import Breadcrumb from "@/components/BreadCrumb";
+import { useRouter } from "next/navigation";
 
 const NM = "var(--font-neue-montreal)";
 
@@ -104,13 +105,7 @@ export default function CheckoutPage() {
   // ── Render ───────────────────────────────────────────────────────
   return (
     <div className="min-h-screen bg-white">
-      <Breadcrumb
-        items={[
-          { label: "Home", href: "/" },
-          { label: "Cart", href: "/cart" },
-          { label: "Checkout", href: "/checkout" },
-        ]}
-      />
+      <Breadcrumb />
 
       <div className="px-6 py-5 md:px-20 md:py-8">
         <div

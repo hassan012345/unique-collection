@@ -70,7 +70,7 @@ export default function Breadcrumb({ items, className }: Props) {
 
   return (
     <nav aria-label="Breadcrumb" className={className}>
-      <ol className="flex flex-wrap items-center gap-1"
+      <ol className="flex flex-wrap items-center gap-1 "
         itemScope itemType="https://schema.org/BreadcrumbList">
         {crumbs.map((crumb, i) => {
           const isLast = i === crumbs.length - 1;

@@ -150,13 +150,6 @@ export default function ProductListingPage({
 
   return (
     <>
-      {/* ── Breadcrumb ────────────────────────────────────────── */}
-      <div className="w-full border-b border-[#E5E5E5] bg-white">
-        <div className="max-w-[1440px] mx-auto px-5 lg:px-20 py-3">
-          <Breadcrumb items={breadcrumbs} />
-        </div>
-      </div>
-
       {/* ── Page header ───────────────────────────────────────── */}
       <div className="w-full">
         <div className="max-w-[1440px] mx-auto px-6 lg:px-20 py-5 lg:py-6">

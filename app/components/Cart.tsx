@@ -1,6 +1,8 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
+import CartItem from "./CartItem";
 import { useState } from "react";
 
 export default function CartDrawer({ isOpen, onClose }: any) {
@@ -56,13 +58,25 @@ export default function CartDrawer({ isOpen, onClose }: any) {
           <h2 className="text-[16px] font-medium">
             Your Cart <span className="text-gray-500">(2 items)</span>
           </h2>
-          <button onClick={onClose} className="text-xl">×</button>
+          <button onClick={onClose} className="text-xl">
+            ×
+          </button>
         </div>
 
         {/* Items */}
         <div className="flex-1 overflow-y-auto px-5 py-4 space-y-5">
           {items.map((item) => (
-            <CartItem key={item.id} item={item} />
+            <CartItem key={item.id} 
+              id={item.id.toString()}
+              name={item.name}
+              variant={item.variant}
+              price={item.price}
+              image={item.image}
+              quantity={item.qty}
+              onIncrease={() => {}}
+              onDecrease={() => {}}
+              onRemove={() => {}}
+            />
           ))}
         </div>
 
@@ -72,59 +86,14 @@ export default function CartDrawer({ isOpen, onClose }: any) {
             <span className="text-gray-500">SUBTOTAL</span>
             <span className="font-medium">Rs {subtotal.toLocaleString()}</span>
           </div>
-
-          <button className="w-full bg-[#1f5c4c] text-white py-3 rounded-full text-sm">
-            Proceed to Checkout →
-          </button>
-
+          <Link href={"/checkout"}>
+            <button className="w-full bg-[#1f5c4c] text-white py-3 rounded-full text-sm">
+              Proceed to Checkout →
+            </button>
+          </Link>
           <p className="text-[11px] text-gray-400 text-center">
             Tax included & Shipping costs will be calculated on the checkout
           </p>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function CartItem({ item }: any) {
-  const [qty, setQty] = useState(item.qty);
-
-  return (
-    <div className="flex gap-3">
-      {/* Image */}
-      <div className="w-16 h-16 rounded-md overflow-hidden bg-gray-100">
-        <Image
-          src={item.image}
-          alt={item.name}
-          width={64}
-          height={64}
-          className="object-cover w-full h-full"
-        />
-      </div>
-
-      {/* Info */}
-      <div className="flex-1">
-        <div className="flex justify-between">
-          <div>
-            <h3 className="text-[13px] font-medium leading-tight">
-              {item.name}
-            </h3>
-            <p className="text-[12px] text-gray-500">{item.variant}</p>
-          </div>
-
-          <button className="text-gray-500">🗑</button>
-        </div>
-
-        <div className="flex justify-between items-center mt-2">
-          {/* Qty */}
-          <div className="flex items-center gap-2 px-2 py-1 text-sm">
-            <button className="border rounded-full w-6 h-6 flex items-center justify-center" onClick={() => setQty(Math.max(1, qty - 1))}>-</button>
-            <span>{qty}</span>
-            <button className="border rounded-full w-6 h-6 flex items-center justify-center" onClick={() => setQty(qty + 1)}>+</button>
-          </div>
-
-          {/* Price */}
-          <span className="text-[13px] text-neutral-500">Rs {item.price.toLocaleString()}</span>
         </div>
       </div>
     </div>

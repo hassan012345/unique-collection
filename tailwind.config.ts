@@ -50,7 +50,7 @@ const config: Config = {
         h2: ["40px", { lineHeight: "48px", fontWeight: "700" }],
         h3: ["32px", { lineHeight: "40px", fontWeight: "600" }],
         h4: ["24px", { lineHeight: "32px", fontWeight: "600" }],
-        body: ["16px", { lineHeight: "24px" }],
+        body: ["18px", { lineHeight: "24px", fontWeight: "500" }],
         small: ["14px", { lineHeight: "20px" }],
       },
       spacing: {
